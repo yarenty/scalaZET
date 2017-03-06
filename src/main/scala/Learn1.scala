@@ -7,16 +7,18 @@ trait Monoid[A] {
   def mzero: A
 }
 
+object Monoid {
+  implicit val IntMonoid: Monoid[Int] = new Monoid[Int] {
+    def mappend(a: Int, b: Int): Int = a + b
 
+    def mzero: Int = 0
+  }
+  implicit val StringMonoid: Monoid[String] = new Monoid[String] {
+    def mappend(a: String, b: String): String = a + b
 
-object IntMonoid extends Monoid[Int] {
-  def mappend(a: Int, b: Int): Int = a + b
-
-  def mzero: Int = 0
+    def mzero: String = ""
+  }
 }
-
-
-
 
 
 object Learn1 {
@@ -29,11 +31,13 @@ object Learn1 {
 
   def main(args: Array[String]): Unit = {
 
-    implicit val intMonoid = IntMonoid
 
     val out = sum(List(1, 2, 3, 4))
 
     println(out)
+
+    val o2 = sum(List("a", "b", "c"))
+    println(o2)
   }
 
 }
