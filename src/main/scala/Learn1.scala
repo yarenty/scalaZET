@@ -29,6 +29,13 @@ object Learn1 {
     xs.foldLeft(m.mzero)(m.mappend)
   }
 
+
+  val multiMonoid: Monoid[Int] = new Monoid[Int] {
+    def mappend(a: Int, b: Int): Int = a * b
+
+    def mzero: Int = 1
+  }
+
   def main(args: Array[String]): Unit = {
 
 
@@ -38,6 +45,10 @@ object Learn1 {
 
     val o2 = sum(List("a", "b", "c"))
     println(o2)
+
+    val o3 = sum(List(1, 2, 3, 4))(multiMonoid)
+    println(o3)
+
   }
 
 }
