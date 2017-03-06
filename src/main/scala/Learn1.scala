@@ -19,11 +19,11 @@ object Learn1 {
 
 
 
-  def sum(xs: List[Int]): Int = xs.foldLeft(IntMonoid.mzero)(IntMonoid.mappend)
+  def sum(xs: List[Int], m: Monoid[Int]): Int = xs.foldLeft(m.mzero)(m.mappend)
 
   def main(args: Array[String]): Unit = {
 
-    val out = sum(List(1, 2, 3, 4))
+    val out = sum(List(1, 2, 3, 4), IntMonoid)
 
     println(out)
   }
