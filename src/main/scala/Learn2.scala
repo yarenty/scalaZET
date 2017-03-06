@@ -4,8 +4,13 @@
 object Learn2 {
 
 
-  object FoldLeftList {
-    def foldLeft[A, B](xs: List[A], b: B, f: (B, A) => B) = xs.foldLeft(b)(f)
+  trait FoldLeft[F[_]] {
+    def foldLeft[A, B](xs: F[A], b: B, f: (B, A) => B): B
+  }
+  object FoldLeft {
+    implicit val FoldLeftList: FoldLeft[List] = new FoldLeft[List] {
+      def foldLeft[A, B](xs: List[A], b: B, f: (B, A) => B) = xs.foldLeft(b)(f)
+    }
   }
 
   trait Monoid[A] {
@@ -27,10 +32,12 @@ object Learn2 {
     }
   }
 
-  def sum[A: Monoid](xs: List[A]): A = {
+  def sum[M[_]: FoldLeft, A: Monoid](xs: M[A]): A = {
     val m = implicitly[Monoid[A]]
-    FoldLeftList.foldLeft(xs, m.mzero, m.mappend)
+    val fl = implicitly[FoldLeft[M]]
+    fl.foldLeft(xs, m.mzero, m.mappend)
   }
+
 
 
   val multiMonoid: Monoid[Int] = new Monoid[Int] {
@@ -49,7 +56,7 @@ object Learn2 {
     val o2 = sum(List("a", "b", "c"))
     println(o2)
 
-    val o3 = sum(List(1, 2, 3, 4))(multiMonoid)
+    val o3 = sum(List(1, 2, 3, 4))( FoldLeft.FoldLeftList, multiMonoid)
     println(o3)
 
   }
