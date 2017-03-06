@@ -1,7 +1,12 @@
 /**
   * Created by yarenty on 06/03/2017.
   */
-object IntMonoid {
+trait Monoid[A] {
+  def mappend(a1: A, a2: A): A
+  def mzero: A
+}
+
+object IntMonoid extends Monoid[Int] {
   def mappend(a: Int, b: Int): Int = a + b
   def mzero: Int = 0
 }
