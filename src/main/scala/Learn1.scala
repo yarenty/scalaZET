@@ -19,7 +19,7 @@ object Learn1 {
 
 
 
-  def sum(xs: List[Int], m: Monoid[Int]): Int = xs.foldLeft(m.mzero)(m.mappend)
+  def sum[A](xs: List[A], m: Monoid[A]): A = xs.foldLeft(m.mzero)(m.mappend)
 
   def main(args: Array[String]): Unit = {
 
