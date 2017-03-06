@@ -22,7 +22,10 @@ object IntMonoid extends Monoid[Int] {
 object Learn1 {
 
 
-  def sum[A](xs: List[A])(implicit m: Monoid[A]): A = xs.foldLeft(m.mzero)(m.mappend)
+  def sum[A: Monoid](xs: List[A]): A = {
+    val m = implicitly[Monoid[A]]
+    xs.foldLeft(m.mzero)(m.mappend)
+  }
 
   def main(args: Array[String]): Unit = {
 
