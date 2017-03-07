@@ -8,7 +8,7 @@ import scalaz._
 /**
   * typeclases 102
   */
-object Learn5 {
+object Learn5_typeclasses_102 {
 //
 //  sealed trait TrafficLight
 //  case object Red extends TrafficLight

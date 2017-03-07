@@ -5,7 +5,7 @@
 import scalaz._
 import Scalaz._
 
-object Learn4 {
+object Learn4_cord_eq_orderings_enums {
 
   def main(args: Array[String]): Unit = {
 

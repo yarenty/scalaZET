@@ -8,7 +8,7 @@ import scalaz._
 /**
   *  Yes-No typeclass
   */
-object Learn6 {
+object Learn6_YesNo_typeclass {
 
 
 

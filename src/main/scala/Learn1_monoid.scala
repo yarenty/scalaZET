@@ -1,7 +1,7 @@
 /**
   * Created by yarenty on 06/03/2017.
   */
-object Learn1 {
+object Learn1_monoid {
 
   trait Monoid[A] {
     def mappend(a1: A, a2: A): A
