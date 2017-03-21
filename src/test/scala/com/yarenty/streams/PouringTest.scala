@@ -10,10 +10,20 @@ object PouringTest {
 
     println(problem.moves)
 
-
     println(problem.pathSets.take(3).toList)
-    val problem2 = new Pouring(Vector(4,7,9))
+
+    println("SOLUTION 4,7 => 6")
+    println(problem.solution(6))
+
+
+    val problem2 = new Pouring(Vector(4,9))
     println(problem2.moves)
+    println("SOLUTION 4,9 => 6")
+    println(problem2.solution(6))
+
+
+
+
 //
 
   }
