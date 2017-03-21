@@ -11,9 +11,11 @@ object PouringTest {
     println(problem.moves)
 
 
+    println(problem.pathSets.take(3).toList)
     val problem2 = new Pouring(Vector(4,7,9))
-
     println(problem2.moves)
+//
+
   }
 
 
